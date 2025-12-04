@@ -36,9 +36,9 @@ echo "     Removing generated folder"
 echo "======================================="
 
 # Remove openvpn directory
-if [ -d "/home/ubuntu/openvpn" ]; then
+if [ -d "${HOME}/openvpn" ]; then
     echo "Deleting ./openvpn/"
-    rm -rf /home/ubuntu/openvpn
+    rm -rf ${HOME}/openvpn
 fi
 
 
@@ -48,7 +48,7 @@ echo "     Removing log folders "
 echo "======================================="
 # Remove log folders
 for ((i=1; i<=LXC_COUNT; i++)); do
-    LOGDIR="/home/ubuntu/ovpn$i-logs"
+    LOGDIR="${HOME}/ovpn$i-logs"
     if [ -d "$LOGDIR" ]; then
         echo "Deleting $LOGDIR/"
         rm -rf "$LOGDIR"

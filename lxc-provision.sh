@@ -28,12 +28,12 @@ for i in $(seq $START $END); do
 done
 
 echo "[INFO] Pulls the /etc/openvpn/ directory from the frist lxc for consistent keys"
-lxc file pull -r ovpn$START/etc/openvpn/ /home/ubuntu/
+lxc file pull -r ovpn$START/etc/openvpn/ ${HOME}/
 
 
 echo "[INFO] Pushes this directory to all lxcs for consistency"
 for i in $(seq $START $END); do
-  lxc file push -r /home/ubuntu/openvpn/ ovpn$i/etc/
+  lxc file push -r ${HOME}/openvpn/ ovpn$i/etc/
 done
 
 echo "[INFO] Replacing the first line in server.conf with LXC IP"
@@ -76,12 +76,12 @@ for c in $(lxc list -c n --format csv | grep ovpn); do
 done
 
 # Pulls the client file from the first lxc to the host
-echo "[INFO] Pulls the client file from the first lxc to the host with name $CLIENT_NAME in /home/ubuntu/openvpn/client/"
-lxc file pull ovpn$START/root/client.ovpn /home/ubuntu/openvpn/client/$CLIENT_NAME.ovpn
+echo "[INFO] Pulls the client file from the first lxc to the host with name $CLIENT_NAME in ${HOME}/openvpn/client/"
+lxc file pull ovpn$START/root/client.ovpn ${HOME}/openvpn/client/$CLIENT_NAME.ovpn
 
 
 # Editing the ports in the client file
-CLIENT_FILE="/home/ubuntu/openvpn/client/$CLIENT_NAME.ovpn"
+CLIENT_FILE="${HOME}/openvpn/client/$CLIENT_NAME.ovpn"
 echo "->[INFO] Auto-detecting mapped ports from LXC proxy devices..."
 
 # echo "Host IP is ${HOST_IP}"

@@ -1,7 +1,7 @@
 #!/bin/bash
 # update-server-fvm.sh
 
-# Check UUID parameter
+# Required UUID parameter
 if [[ $# -ne 1 ]]; then
   echo "Usage: $0 <uuid>"
   exit 1
