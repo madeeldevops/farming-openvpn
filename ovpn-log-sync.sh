@@ -8,7 +8,7 @@ if [[ -t 0 ]]; then
     read -p "How many OVPN LXC servers do you want to sync? (default: 3) " LXC_COUNT
     LXC_COUNT=${LXC_COUNT:-3}
 else
-    LXC_COUNT=${1:-3}
+    LXC_COUNT=${LXC_COUNT:-3}
 fi
 
 echo "->[INFO] Syncing logs for $LXC_COUNT OpenVPN servers..."
