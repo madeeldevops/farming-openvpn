@@ -139,6 +139,8 @@ The OpenVPN client tries them in order. If one server is down, it can connect to
 **Q: Why LXC instead of Docker?**
 LXC gives you a more "full system" environment with low overhead and better isolation than just processes in containers, which is handy for VPN stacks.
 
+**Q: Why is dco disabled?**
+Because LXC doesn't support kernel level operations.
 ---
 
 ## 🙌 Contributions

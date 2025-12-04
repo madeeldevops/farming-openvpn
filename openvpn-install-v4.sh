@@ -333,7 +333,8 @@ persist-tun
 verb 3
 crl-verify crl.pem
 
-# funsol added values
+# adeel added values
+disable-dco
 status /var/log/openvpn/openvpn-status.log
 #management localhost 5555
 #client-to-client
