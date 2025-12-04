@@ -15,7 +15,7 @@ LXC_COUNT=${LXC_COUNT:-3}
 # Build dynamic log file list
 LOG_FILES=()
 for ((i=1; i<=LXC_COUNT; i++)); do
-    LOG_FILES+=("ovpn$i-logs/openvpn-status.log")
+    LOG_FILES+=("/home/${USER}/ovpn$i-logs/openvpn-status.log")
 done
 
 API_URL="url"
