@@ -15,7 +15,7 @@ echo "->[INFO] Syncing logs for $LXC_COUNT OpenVPN servers..."
 
 for ((i=1; i<=LXC_COUNT; i++)); do
     INSTANCE="ovpn$i"
-    DESTINATION_PATH="{HOME}/${INSTANCE}-logs/"
+    DESTINATION_PATH="${HOME}/${INSTANCE}-logs/"
     LOG_FILE="${DESTINATION_PATH}openvpn-status.log"
 
     mkdir -p "$DESTINATION_PATH"
