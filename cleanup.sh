@@ -10,7 +10,7 @@ if [[ -t 0 ]]; then
     read -p "How many OVPN LXC servers do you want to delete? (default: 3) " LXC_COUNT
     LXC_COUNT=${LXC_COUNT:-3}
 else
-    LXC_COUNT=${1:-3}
+    LXC_COUNT=${LXC_COUNT:-3}
 fi
 
 echo "[INFO] Removing ovpn1 → ovpn$LXC_COUNT containers..."
