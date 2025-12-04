@@ -1,6 +1,11 @@
 #!/bin/bash
 # update-server-fvm.sh
 
+# Load .env file if exists
+if [[ -f .env ]]; then
+  export $(grep -v '^#' .env | xargs)
+fi
+
 # Required UUID parameter
 if [[ $# -ne 1 ]]; then
   echo "Usage: $0 <uuid>"
@@ -15,11 +20,12 @@ LXC_COUNT=${LXC_COUNT:-3}
 # Build dynamic log file list
 LOG_FILES=()
 for ((i=1; i<=LXC_COUNT; i++)); do
-    LOG_FILES+=("/home/${USER}/ovpn$i-logs/openvpn-status.log")
+    LOG_FILES+=("${HOME}/ovpn$i-logs/openvpn-status.log")
 done
 
-API_URL="url"
-AUTH_TOKEN="token"
+# Values loaded from .env
+API_URL=${API_URL}
+AUTH_TOKEN=${AUTH_TOKEN}
 
 # Count connected clients
 CLIENT_COUNT=0
