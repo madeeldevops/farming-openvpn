@@ -4,7 +4,7 @@
 # Default to 3 if not exported
 # If running manually (interactive terminal), ask user
 # If running manually (interactive terminal), ask user
-if [[ -t 0 ]]; then
+if [[ -t 0 && "$PS1" != "" ]]; then
     read -p "How many OVPN LXC servers do you want to sync? (default: 3) " LXC_COUNT
     LXC_COUNT=${LXC_COUNT:-3}
 else
