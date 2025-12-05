@@ -1,9 +1,18 @@
 #!/bin/bash
 # update-server-fvm.sh
 
-# Load .env file if exists
-if [[ -f .env ]]; then
-  export $(grep -v '^#' .env | xargs)
+# Resolve script directory (works in cron, works manually)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Load .env from the same directory as this script
+ENV_FILE="$SCRIPT_DIR/.env"
+if [[ -f "$ENV_FILE" ]]; then
+  set -o allexport
+  # shellcheck disable=SC1090
+  source "$ENV_FILE"
+  set +o allexport
+else
+  echo "[WARN] .env file not found at $ENV_FILE"
 fi
 
 # Required UUID parameter
@@ -33,6 +42,7 @@ for LOG_FILE in "${LOG_FILES[@]}"; do
   if [[ -f "$LOG_FILE" ]]; then
     COUNT=$(grep -c '^CLIENT_LIST' "$LOG_FILE")
     CLIENT_COUNT=$((CLIENT_COUNT + COUNT))
+#    echo "$LOG_FILE : Count is $CLIENT_COUNT"
   else
     echo "⚠️ Missing log: $LOG_FILE"
   fi

@@ -42,15 +42,16 @@ echo
 echo "======================================="
 echo " STEP 2 — Sync Logs for Monitoring"
 echo "======================================="
-./ovpn-log-sync.sh
+LXC_COUNT=$LXC_COUNT ./ovpn-log-sync.sh
 
 echo
 echo "======================================="
 echo " STEP 3 — Adding Cron Job for Log Sync"
 echo "======================================="
 LXC_COUNT=$LXC_COUNT ./install-cron.sh
-# echo
-# echo "======================================="
-# echo " STEP 4 — Update FVM Backend with Stats"
-# echo "======================================="
-# ./update-server-fvm.sh d194a2cf-7c50-46a6-a2aa-65c03awfasdfwa
+
+echo
+echo "======================================="
+echo " STEP 4 — Update FVM Backend with Stats"
+echo "======================================="
+LXC_COUNT=$LXC_COUNT ./update-server-fvm.sh uuid-uid-uuid-uuid-uuiduuid
