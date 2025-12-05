@@ -429,7 +429,10 @@ persist-tun
 remote-cert-tls server
 auth SHA512
 ignore-unknown-option block-outside-dns
-verb 3" > /etc/openvpn/server/client-common.txt
+verb 3
+# adeel added values Retry after 5 seconds if connection fails
+connect-timeout 5
+connect-retry 0" > /etc/openvpn/server/client-common.txt
 	# Enable and start the OpenVPN service
 	systemctl enable --now openvpn-server@server.service
 	# Build the $client.ovpn file, stripping comments from easy-rsa in the process
