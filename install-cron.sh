@@ -17,6 +17,8 @@ CRON2="* * * * * LXC_COUNT=${LXC_COUNT} ${SCRIPT_DIR}/update-server-fvm.sh UUID 
 TMP_CRON=$(mktemp)
 
 # Load existing cron entries (if any)
+echo "[INFO] Existing cronjob file"
+echo $TMP_CRON
 crontab -l 2>/dev/null > "$TMP_CRON"
 
 # Add your entries (avoiding duplicates)
